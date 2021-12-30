@@ -44,14 +44,28 @@ code {
 }
 
 .outer-container {
+  margin-top:20px;
+}
+
+.news-container {
   margin-top:50px;
 }
 
 .news-item {
   padding: 15px;
+  margin-top:20px;
   cursor:pointer;
   background-color:rgb(44, 44, 44) !important;
   transition: transform 0.2s;
+}
+
+.back-button {
+  margin-top:100px;
+  background-color: black;
+}
+
+.news-img {
+  margin-top:50px;
 }
 
 .news-item:hover {
@@ -59,5 +73,10 @@ code {
 }
 
 .title {
+  margin-top:20px;
+}
+
+.news {
+  color:white;
   margin-top:20px;
 }

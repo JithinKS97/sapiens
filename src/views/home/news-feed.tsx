@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
 import Masonry from "react-masonry-css";
+import { Link } from "react-router-dom";
 
 const breakpointColumnsObj = {
   default: 4,
@@ -74,9 +75,9 @@ So the next time you head out to meet a friend at your favorite food truck, need
   },
 ];
 
-export default function NewsFeed() {
+export default function NewsFeed({ setSelectedNews }: any) {
   const handleClick = (news: any) => () => {
-    console.log(news);
+    setSelectedNews(news);
   };
 
   return (
@@ -86,13 +87,13 @@ export default function NewsFeed() {
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
-        {newsFeedArray.map((news) => (
-          <>
+        {newsFeedArray.map((news: any) => (
+          <Link to="/news">
             <div className="news-item" onClick={handleClick(news)}>
               <img width="250px" src={news.img}></img>
               <h3 className="title">{news.title}</h3>
             </div>
-          </>
+          </Link>
         ))}
       </Masonry>
     </div>

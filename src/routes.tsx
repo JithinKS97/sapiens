@@ -5,6 +5,7 @@ import { ConnectionProvider } from "./contexts/connection";
 import { AccountsProvider } from "./contexts/accounts";
 import { MarketProvider } from "./contexts/market";
 import { AppLayout } from "./components/Layout";
+import { useState } from "react";
 
 import { FaucetView, HomeView } from "./views";
 import {
@@ -16,6 +17,7 @@ import {
   getSolongWallet,
   getTorusWallet,
 } from "@solana/wallet-adapter-wallets";
+import News from "./news/News";
 
 export function Routes() {
   const wallets = useMemo(
@@ -37,6 +39,8 @@ export function Routes() {
     []
   );
 
+  const [selectedNews, setSelectedNews] = useState(null);
+
   return (
     <HashRouter basename={"/"}>
       <ConnectionProvider>
@@ -45,7 +49,21 @@ export function Routes() {
             <MarketProvider>
               <AppLayout>
                 <Switch>
-                  <Route exact path="/" component={() => <HomeView />} />
+                  <Route
+                    exact
+                    path="/"
+                    component={() => (
+                      <HomeView
+                        setSelectedNews={setSelectedNews}
+                        selectedNews={selectedNews}
+                      />
+                    )}
+                  />
+                  <Route
+                    exact
+                    path="/news"
+                    component={() => <News selectedNews={selectedNews} />}
+                  />
                   <Route exact path="/faucet" children={<FaucetView />} />
                 </Switch>
               </AppLayout>
