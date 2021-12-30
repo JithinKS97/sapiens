@@ -48,5 +48,16 @@ code {
 }
 
 .news-item {
+  padding: 15px;
   cursor:pointer;
+  background-color:rgb(44, 44, 44) !important;
+  transition: transform 0.2s;
+}
+
+.news-item:hover {
+  transform: scale(1.03);
+}
+
+.title {
+  margin-top:20px;
 }
